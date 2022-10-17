@@ -28,3 +28,6 @@ def perform_login(request):
 def perform_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse("home"))
+
+def test(request):
+    return HttpResponse("test")
