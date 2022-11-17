@@ -5,36 +5,36 @@
     <div class="col-3">
       <div class="card shadow">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h2 class="card-title">{{ no_of_clients }}</h2>
+          <p class="card-text">Total Clients</p>
+          <a href="/clients/{{total_clients.mainid}}" class="btn btn-sm btn-outline-dark">View More</a>
         </div>
       </div>
     </div>
     <div class="col-3">
       <div class="card shadow">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h2 class="card-title">{{ no_of_projects }}</h2>
+          <p class="card-text">Total Projects.</p>
+          <a href="/projects/{{total_projects.mainid}}" class="btn btn-sm btn-outline-dark">View More</a>
         </div>
       </div>
     </div>
     <div class="col-3">
       <div class="card shadow">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h2 class="card-title">{{ total_amount }}</h2>
+          <p class="card-text">Total Amount</p>
+          <a href= "/projects/{{total_projects.mainid}}" class="btn btn-sm btn-outline-dark">View More</a>
         </div>
       </div>
     </div>
     <div class="col-3">
       <div class="card shadow">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h2 class="card-title">{{ recent_project.name }}</h2>
+          <p class="card-text">Recent Project</p>
+          <a href="/view_projects/{{recent_project.mainid}}" class="btn btn-sm btn-outline-dark">View More</a>
         </div>
       </div>
     </div>

@@ -7,42 +7,53 @@
             <div class="card-body">
                 <h4 class="card-title">Add Projects</h4>
                 <hr>
-                <form>
+                <form action="{% url 'add_projects' %}" method="POST">
+                    {% csrf_token %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Tukon International">
+                        <input type="text" class="form-control" id="name" placeholder="Tukon International" name="name">
+                        
                     </div>
 
                     <div class="form-group">
                         <label for="Description">Description</label>
                         <textarea class="form-control" id="Description" rows="3"
-                            placeholder="Digital Process automation"></textarea>
+                            placeholder="Digital Process automation" name ="description"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="amount">Amount ( $ )</label>
-                        <input type="number" class="form-control" id="amount" placeholder="100000">
+                        <input type="number" class="form-control" id="amount" placeholder="100000" name = "amount">
                     </div>
 
                     <div class="form-group">
                         <label for="Client name">Client Name</label>
-                        <select class="form-control" id="Client name">
+                        <select class="form-control" id="Client name" name = "client name">
                           <option>Select Client ....</option>
-                          <option>Alan Mark</option>
-                          <option>Joe Don</option>
-                          <option>Samson Ogbu</option>
-                          <option>Kaustubh Wankhede</option>
+                          {% for client in clients %}
+                          <option value="{{ client.mainid }}">{{ client }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                     <div class="form-group">
                         <label for="startdate">Start Date</label>
-                        <input type="date" class="form-control" id="startdate">
+                        <input type="date" class="form-control" id="startdate" name = "startdate">
                     </div>
                     <div class="form-group">
                         <label for="enddate">End Date</label>
-                        <input type="date" class="form-control" id="enddate">
+                        <input type="date" class="form-control" id="enddate" name = "enddate">
                     </div>
-                    <button type="button" class="btn btn-outline-dark">Submit</button>
+                    <button type="submit" class="btn btn-outline-dark">Submit</button>
                 </form>
             </div>
         </div>
@@ -66,17 +77,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for project in projects %}
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Tukon International</td>
-                            <td>Alan Mark</td>
-                            <td>$100,000</td>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{project.name}}</td>
+                            <td>{{project.clientname}}</td>
+                            <td>{{project.amount}}</td>
                             <td>
-                                <button class="btn btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
-                                <button class="btn btn-outline-success"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                <a class="btn btn-outline-primary" href="/view_projects/{{project.mainid}}"><i
+                                        class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-outline-success" href="/edit_projects/{{project.mainid}}"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btn btn-outline-danger" href="/delete_projects/{{project.mainid}}"><i class="fa-solid fa-trash"></i></a>
+                                
                             </td>
                         </tr>
+                        {% endfor %}
+                       
                     </tbody>
                 </table>
             </div>

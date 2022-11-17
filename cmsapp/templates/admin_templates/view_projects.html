@@ -1,0 +1,56 @@
+{% extends "admin_templates/base.html" %}
+{% block title %}View Projects{% endblock title %}
+{% block content %}
+<center>
+<div class="card shadow m-3" style="width: 540px; text-align: left;">
+    <div class="card-body">
+        <h4 class="card-title">View Projects</h4>
+        <hr>
+        <form>
+            <div class="form-group">
+                <label for="mainid">Main ID</label>
+                <input type="text" class="form-control" id="mainid" placeholder="ABC Company" name="mainid"
+                    value="{{project.mainid}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="companyname" placeholder="Tukon International name="name"
+                    value="{{project.name}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="Contact Person">Description</label>
+                <input type="text" class="form-control" id="Contact Person"  name="description"
+                    value="{{project.description}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" class="form-control" id="amount" 
+                    name="amount" value="{{project.amount}}" readonly>
+
+            </div>
+
+            <div class="form-group">
+                <label for="email">Client Name</label>
+                <input type="text" class="form-control" id="client name" placeholder="client name" name="client name"
+                    value="{{project.clientname}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="startdate">Start date</label>
+                <input type="text" class="form-control" id="startdate" placeholder="..." name="startdate"
+                    value="{{project.startdate}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="duedate">Due date</label>
+                <input type="text" class="form-control" id="duedate"  name="duedate"
+                    value="{{project.duedate}}" readonly>
+            </div>
+            
+            
+            <a href="{% url 'projects' %}" class="btn btn-outline-dark">Back</a>
+        </form>
+    </div>
+</div>
+</center>
+{% endblock content %}

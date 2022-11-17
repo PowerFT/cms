@@ -1,0 +1,58 @@
+{% extends "admin_templates/base.html" %}
+{% block title %}Edit Projects{% endblock title %}
+{% block content %}
+<center>
+    <div class="card shadow m-3" style="width: 540px; text-align: left;">
+        <div class="card-body">
+            <h4 class="card-title">Edit Projects</h4>
+            <hr>
+            <form action="{% url 'edit_project' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="mainid">Main ID</label>
+                    <input type="text" class="form-control" id="mainid" placeholder="ABC Company" name="mainid"
+                        value="{{project.mainid}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="ABC " name="name"
+                        value="{{project.name}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="Contact Person">Description</label>
+                    <input type="text" class="form-control" id="Contact Person" placeholder="John Doe"
+                        name="description" value="{{project.description}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="number">Amount</label>
+                    <input type="number" class="form-control" id="amount" name="amount" value="{{project.amount}}">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="Client name">Client Name</label>
+                    <select class="form-control" id="Client name" name = "clientname">
+                      <option value="{{ project.clientname.mainid }}">{{project.clientname}}</option>
+                      {% for client in clients %}
+                      <option value="{{ client.mainid }}">{{ client }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="startdate">Start Date: {{ project.startdate }}</label>
+                    <input type="date" class="form-control" id="startdate" name = "startdate" value="{{ project.startdate }}">
+                </div>
+                <div class="form-group">
+                    <label for="enddate">End Date: {{ project.duedate }}</label>
+                    <input type="date" class="form-control" id="enddate" name = "enddate" value="{{ project.duedate }}">
+                </div>
+                
+
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock content %}

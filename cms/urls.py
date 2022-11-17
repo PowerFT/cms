@@ -32,5 +32,18 @@ urlpatterns = [
     path("dashboard/", admin_views.render_dashboard, name="dashboard"),
     path("clients/", admin_views.render_clients, name="clients"),
     path("add_clients", admin_views.add_clients, name="add_clients"),
+    path("edit_client", admin_views.edit_client, name="edit_client"),
+    path("delete_client", admin_views.delete_client, name="delete_client"),
+    path("edit_clients/<str:mainid>", admin_views.edit_clients, name="edit_clients"),
+    path("view_clients/<str:mainid>", admin_views.view_clients, name="view_clients"),
+    path("delete_clients/<str:mainid>", admin_views.delete_clients, name="delete_clients"),
+    
     path("projects/", admin_views.render_projects, name="projects"),
+    path("add_projects", admin_views.add_projects, name="add_projects"),
+    path("edit_project", admin_views.edit_project, name="edit_project"),
+    path("delete_project", admin_views.delete_project, name="delete_project"),
+    path("edit_projects/<str:mainid>", admin_views.edit_projects, name="edit_projects"),
+    path("view_projects/<str:mainid>", admin_views.view_projects, name="view_projects"),
+    path("delete_projects/<str:mainid>", admin_views.delete_projects, name="delete_projects"),
+    
 ]
